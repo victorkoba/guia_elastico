@@ -1,0 +1,185 @@
+/* Design tokens: toda cor e espaçamento do guia sai daqui. */
+:root {
+  --cor-papel: #0f3a82;
+  --cor-papel-escuro: #0a2a60;
+  --cor-linha: rgb(255 255 255 / 0.08);
+  --cor-linha-forte: rgb(255 255 255 / 0.25);
+  --cor-texto: #eef3ff;
+  --cor-texto-suave: #b9c8ea;
+  --cor-cota: #ffd23f; /* amarelo das cotas da planta */
+  --cor-erro: #ff7a6b;
+  --cor-ok: #7ee2a8;
+  --cor-codigo: #071d45;
+
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 1rem;
+  --espaco-4: 1.5rem;
+  --espaco-5: 2.5rem;
+  --espaco-6: 4rem;
+
+  --fonte-titulo: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --fonte-texto: 'IBM Plex Sans', system-ui, sans-serif;
+  --fonte-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --texto-p: 1rem;
+  --texto-m: 1.25rem;
+  --texto-g: 2.25rem;
+
+  --largura-pagina: 64rem;
+  --borda: 0.125rem dashed var(--cor-linha-forte);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Sem font-size em px aqui: respeita a configuração de fonte do navegador. */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--fonte-texto);
+  font-size: var(--texto-p);
+  line-height: 1.6;
+  color: var(--cor-texto);
+  background-color: var(--cor-papel);
+  /* A grade da planta: linhas finas a cada 1rem e fortes a cada 5rem */
+  background-image:
+    linear-gradient(var(--cor-linha) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, var(--cor-linha) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(var(--cor-linha) 0.0625rem, transparent 0.0625rem),
+    linear-gradient(90deg, var(--cor-linha) 0.0625rem, transparent 0.0625rem);
+  background-size: 1rem 1rem, 1rem 1rem, 5rem 5rem, 5rem 5rem;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+h1 {
+  font-size: var(--texto-g);
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: var(--texto-m);
+  color: var(--cor-cota);
+}
+
+a {
+  color: var(--cor-cota);
+}
+
+code {
+  font-family: var(--fonte-mono);
+  font-size: 0.9em;
+  background: var(--cor-codigo);
+  padding: 0 var(--espaco-1);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: var(--cor-papel-escuro);
+  background: var(--cor-cota);
+  border: 0;
+  padding: var(--espaco-2) var(--espaco-3);
+  font-family: var(--fonte-mono);
+  font-weight: 600;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--cor-cota);
+  outline-offset: 0.1875rem;
+}
+
+/* Caixa padrão dos laboratórios */
+.lab {
+  border: var(--borda);
+  padding: var(--espaco-3);
+  margin-block: var(--espaco-4);
+  background: rgb(10 42 96 / 0.6);
+}
+
+.lab > h3::before {
+  content: 'LAB ▸ ';
+  color: var(--cor-texto-suave);
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2) var(--espaco-3);
+  align-items: center;
+  margin-block: var(--espaco-3);
+  font-family: var(--fonte-mono);
+  font-size: 0.875rem;
+}
+
+.controles label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+  align-items: center;
+}
+
+.controles input[type='range'] {
+  width: 100%;
+  max-width: 16rem;
+}
+
+.leitura {
+  font-family: var(--fonte-mono);
+  color: var(--cor-cota);
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* Linhas de texto com ~65 caracteres: confortável de ler mesmo em tela larga */
+p,
+li {
+  max-width: 65ch;
+}
