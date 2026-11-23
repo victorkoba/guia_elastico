@@ -51,10 +51,10 @@ O roteador usa hash (`/#/rota`), então funciona em qualquer hospedagem estátic
 redirecionamentos.
 
 - **Vercel / Netlify:** importar o repositório do GitHub. Build: `npm run build`. Pasta: `dist`.
-- **GitHub Pages:** em `vite.config.js`, adicionar `base: '/NOME-DO-REPOSITORIO/'` e publicar a
+- **GitHub Pages:** em `vite.config.js`, adicionar `base: '/guia_elastico/'` e publicar a
   pasta `dist`.
 
 ## Dupla
 
-- _Nome 1_
-- _Nome 2_
+- Victor Luiz Koba Batista
+- Rodrigo Santos Graça
